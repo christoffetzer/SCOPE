@@ -1,3 +1,0 @@
-[submodule "InstallPatchedDocker"]
-	path = SCONE_HOSTINSTALLER
-	url = https://christof@scone.cf/scone/tutorial/SCONE_HOSTINSTALLER
