@@ -12,7 +12,7 @@ run-SCOPE-stack:
     - virtualbox-runner
   stage: build
   script:
-    - ./install_patched_docker.sh
+    - sudo ./install_patched_docker.sh
     - sudo docker stack deploy -c scope.yml SCOPE
     - wget http://localhost:4040 | wc -l
     - sudo docker stack rm SCOPE

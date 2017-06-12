@@ -6,6 +6,7 @@
 
 set -e -x
 
+sudo apt-get update
 echo "removing old docker engine - if installed"
 (sudo systemctl stop docker) || true
 (sudo service docker stop) || true
