@@ -1,0 +1,15 @@
+image: ubuntu:16.04
+
+before_script:
+  - apt-get update
+
+build-musl-plain:
+  tags:
+    - docker-runner
+    - docker-sock
+  stage: build
+  script:
+    - docker stack deploy -c scope.yml SCOPE
+    - wget http://localhost:4040 | wc -l
+    - docker stack rm SCOPE
+
