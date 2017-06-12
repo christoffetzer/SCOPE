@@ -2,9 +2,9 @@ version: '3'
 services:
   scope:
     image: weaveworks/scope:1.3.0
-    network_mode: "host"
+    # network_mode: "host"
     pid: "host"
-    privileged: true
+    # privileged: true
     ports:
       - 4040:4040
     labels:
