@@ -1,0 +1,3 @@
+[submodule "SCONE_HOSTINSTALLER"]
+	path = SCONE_HOSTINSTALLER
+	url = ../../scone/tutorial/SCONE_HOSTINSTALLER.git
