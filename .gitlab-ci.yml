@@ -12,7 +12,7 @@ run-SCOPE-stack:
     - virtualbox-runner
   stage: build
   script:
-    - sudo ./install_patched_docker.sh
+    - sudo SCONE_HOSTINSTALLER/install_patched_docker.sh
     - sudo docker swarm init
     - sudo docker stack deploy -c scope.yml SCOPE
     - sleep 5
