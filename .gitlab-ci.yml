@@ -15,6 +15,7 @@ run-SCOPE-stack:
     - sudo ./install_patched_docker.sh
     - sudo docker swarm init
     - sudo docker stack deploy -c scope.yml SCOPE
-    - wget http://localhost:4040 | wc -l
+    - sleep 5
+    - wget http://localhost:4040 || echo "Upps"
     - sudo docker stack rm SCOPE
 
