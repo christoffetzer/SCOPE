@@ -13,7 +13,7 @@ run-SCOPE-stack:
   stage: build
   script:
     - ./install_patched_docker.sh
-    - docker stack deploy -c scope.yml SCOPE
+    - sudo docker stack deploy -c scope.yml SCOPE
     - wget http://localhost:4040 | wc -l
-    - docker stack rm SCOPE
+    - sudo docker stack rm SCOPE
 
