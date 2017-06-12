@@ -4,11 +4,12 @@ before_script:
   - sudo apt-get update
   - sudo apt-get install -y  wget docker
 
-build-musl-plain:
+run-SCOPE-stack:
   tags:
     - virtualbox-runner
   stage: build
   script:
+    - SCONE_HOSTINSTALLER/install_patched_docker.sh
     - docker stack deploy -c scope.yml SCOPE
     - wget http://localhost:4040 | wc -l
     - docker stack rm SCOPE
