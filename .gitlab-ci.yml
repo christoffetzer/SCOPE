@@ -2,6 +2,7 @@ image: ubuntu:16.04
 
 before_script:
   - apt-get update
+  - apt-get install -y docker wget
 
 build-musl-plain:
   tags:
