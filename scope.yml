@@ -22,7 +22,25 @@ services:
         parallelism: 1
         delay: 10s
       restart_policy:
-        condition: on-failure
-      
+        condition: any
+      depends_on:
+      - memcached      
+
     command:
       - "--probe.docker=true"
+      - "-app.memcached.hostname memcached-1"
+
+
+  memcached:
+    image: memcached
+    ports:
+      - "11211:11211"
+
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: any
