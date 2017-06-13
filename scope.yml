@@ -29,7 +29,8 @@ services:
 
     command:
       - "--probe.docker=true"
-      - "-app.memcached.hostname memcached-1"
+      - "-app.memcached.hostname" 
+      - "memcached-1"
 
 
   memcached:
