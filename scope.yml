@@ -23,7 +23,8 @@ services:
         delay: 10s
       restart_policy:
         condition: any
-      depends_on:
+
+    depends_on:
       - memcached      
 
     command:
