@@ -29,7 +29,7 @@ Point your browser to port 4040 of the docker host: `open http://localhost:4040`
 
 You will see a dashboard similar to this:
 
-![SCOPE Dashboard](scope.tiff)
+![SCOPE Dashboard](Scope.tiff)
 
 In case your docker engine is on DOCKERHOST sitting behind a firewall, you might forward a tunnel to the docker host:
 
