@@ -14,9 +14,12 @@ run-SCOPE-stack:
   script:
     - sudo SCONE_HOSTINSTALLER/install_patched_docker.sh
     - sudo docker swarm init
-    - sudo docker stack deploy -c scope.yml SCOPE
-    - sleep 5
+# change user has not taken effect - run with sudo
+    - sudo ./start-scope.sh
     - IP=`hostname -I | awk '{print $1;}'`
+    - sudo docker stack ps SCOPE
+    - sleep 5
+    - sudo docker stack ps SCOPE
     - wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 8 http://$IP:4040
-    - sudo docker stack rm SCOPE
+    - sudo ./stop-scope.sh
 

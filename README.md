@@ -21,24 +21,26 @@ docker stack rm SCOPE
 
 ```bash
 NODES=`docker node ls --format "{{ .Hostname }}"`
-
 ```
 
 ## Usage
 
-Point your browser to port 4040 of the docker host.`open http://localhost:4040`. You will see a dashboard similar to this:
+Point your browser to port 4040 of the docker host: `open http://localhost:4040`. 
 
-![SCOPE Dashboard](./scope.tiff)
+You will see a dashboard similar to this:
+
+![SCOPE Dashboard](scope.tiff)
 
 In case your docker engine is on DOCKERHOST sitting behind a firewall, you might forward a tunnel to the docker host:
 
 ```bash
-ssh -Nnf -L 4040:localhost:4040 DOCKERHOST
+ssh -Nnf -L 4040:DOCKERHOST:4040 DOCKERHOST
 ```
 
 ## ToDos
 
-- replicate on all nodes of a Docker Swarm
+- replicate on all nodes of a Docker Swarm 
+    - mode global ok - how do they find each other
 
 - run plugins like https://github.com/weaveworks-plugins/scope-http-statistics
 
@@ -47,3 +49,5 @@ ssh -Nnf -L 4040:localhost:4040 DOCKERHOST
 - https://github.com/weaveworks-plugins/scope-volume-count
 
 - ** Write a plugin that shows the EPC usage**
+
+- integrate with memcached
