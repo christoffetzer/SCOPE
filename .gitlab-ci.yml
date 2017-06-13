@@ -16,6 +16,7 @@ run-SCOPE-stack:
     - sudo docker swarm init
     - sudo docker stack deploy -c scope.yml SCOPE
     - sleep 5
+    - IP=`hostname -I | awk '{print $1;}'`
     - wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 2 http://$IP:4040
     - sudo docker stack rm SCOPE
 
