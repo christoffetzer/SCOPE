@@ -15,7 +15,7 @@ your swarm and execute
 ## Installation
 
 Log into a manager node of your Docker Swarm. Tag all nodes as described 
-in the GRAFANA monitoring repository.
+in the MONITORING repository.
 
 Then execute:
 
