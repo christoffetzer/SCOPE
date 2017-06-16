@@ -38,6 +38,7 @@ function usage {
     echo "-v         print some progress messages."
     echo "-p         print port mapping."
     echo "-x         debug mode - prints all executed commands."
+    echo "-s         stop existing ssh tunnels - use with care!"
     echo "Example:   `basename ${BASH_SOURCE[0]}` -v -p -m swarm.manager.node"
     if [[ $1 != 0 ]] ; then
         exit $1
