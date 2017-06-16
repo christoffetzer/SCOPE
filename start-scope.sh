@@ -1,5 +1,7 @@
 #!/bin/bash
-
+# generate stack file for SCOPEs.
+# Problem: scopes provide different information and hence, we need to put them on different 
+# (C) Christof Fetzer
 set -e 
 
 verbose_on=${VERBOSE:-false}
@@ -22,11 +24,10 @@ function create_yml
     export PORT=4040
     cp scope-stack.yml $outputfile
     for NODENO in `seq 1 $no` ; do
-        verbose  "Adding config for node $no "
+        verbose  "Adding config for node $NODENO "
         envsubst < scope-template.yml >> $outputfile
         ((PORT++))
     done
-    
 }
 
 create_yml
