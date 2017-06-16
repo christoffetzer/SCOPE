@@ -15,7 +15,7 @@ run-SCOPE-stack:
     - sudo SCONE_HOSTINSTALLER/install_patched_docker.sh
 # change user has not taken effect - run with sudo
     - sudo docker swarm init
-    - sudo docker node update --label-add nodeno="$no" $(sudo docker node ls -q)
+    - sudo docker node update --label-add nodeno="1" $(sudo docker node ls -q)
     - sudo ./start-scope.sh
     - sleep 5
     - IP=`hostname -I | awk '{print $1;}'`
