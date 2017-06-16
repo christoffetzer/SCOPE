@@ -1,5 +1,5 @@
 
-  scope:
+  scope-${NODENO}:
     image: weaveworks/scope:release-1.5-1667984
     # network_mode: "host"
 

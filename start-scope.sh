@@ -21,7 +21,7 @@ function create_yml
     export NODENO=1
     export PORT=4040
     cp scope-stack.yml $outputfile
-    for node in `seq 1 $no` ; do
+    for NODENO in `seq 1 $no` ; do
         verbose  "Adding config for node $no "
         envsubst < scope-template.yml >> $outputfile
         ((PORT++))
@@ -30,7 +30,7 @@ function create_yml
 }
 
 create_yml
-echo docker stack deploy -c $outputfile SCOPE
+docker stack deploy -c $outputfile SCOPE
 
 echo "OK: SCOPE deployed."
 
