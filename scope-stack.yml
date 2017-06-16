@@ -1,0 +1,16 @@
+version: '3'
+services:
+
+  memcached:
+    image: memcached
+    ports:
+      - "11211:11211"
+
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: any

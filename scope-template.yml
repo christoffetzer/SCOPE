@@ -1,5 +1,4 @@
-version: '3'
-services:
+
   scope:
     image: weaveworks/scope:release-1.5-1667984
     # network_mode: "host"
@@ -8,7 +7,7 @@ services:
     # privileged: true
 
     ports:
-      - 4040:4040
+      - ${PORT}:4040
 
     labels:
       - "works.weave.role=system"
@@ -17,7 +16,11 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:rw"
 
     deploy:
-      mode: global
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - "node.labels.nodeno == ${NODENO}"
       update_config:
         parallelism: 1
         delay: 10s
@@ -25,24 +28,10 @@ services:
         condition: any
 
     depends_on:
-      - memcached      
+      - memcached
 
     command:
       - "--probe.docker=true"
       - "-app.memcached.hostname" 
-      - "memcached-1"
+      - "localhost"
 
-
-  memcached:
-    image: memcached
-    ports:
-      - "11211:11211"
-
-    deploy:
-      mode: replicated
-      replicas: 1
-      update_config:
-        parallelism: 1
-        delay: 10s
-      restart_policy:
-        condition: any
