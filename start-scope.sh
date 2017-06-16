@@ -13,17 +13,11 @@ function verbose
 }
 
 
-function no_nodes
-{
-    nodes=`docker node ls --format "{{.Hostname}}" | sort`
-    verbose "determine number of nodes in swarm: $nodes."
-}
-
 # create stack file:
 
 function create_yml
 {
-    no=$(no_nodes)
+    no=`docker node ls -q | wc -l`
     export NODENO=1
     export PORT=4040
     cp scope-stack.yml $outputfile
