@@ -1,8 +1,14 @@
 #!/bin/bash
-# generate stack file for SCOPEs.
-# Problem: scopes provide different information and hence, we need to put them on different 
-# (C) Christof Fetzer
+#
+# - Generates a stack file to start a SCOPE on each node of the swarm
+#   - each instance is available at a different port
+# - Starts this swarm
+#
+# (C) Christof Fetzer, 2017
+
 set -e 
+
+# todo: maybe, provide some options instead
 
 verbose_on=${VERBOSE:-false}
 outputfile=${OUTPUTFILE:-"scope-generated.yml"}
