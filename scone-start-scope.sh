@@ -126,7 +126,7 @@ function  start_tunnel {
         let local_port=$scone_monitor_tunnel_port        
         let scone_monitor_tunnel_port=$scone_monitor_tunnel_port+$no
     fi
-    let scone_sentry_port_${manager}=$local_port
+    let scone_scope_port_${manager}=$local_port
     add_variable scone_scope_port_${manager}
     echo $local_port
 
