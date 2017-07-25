@@ -118,7 +118,9 @@ function  start_tunnel {
 
 # todo: use manager_node index instead - in case #NODES has increased...
 
-    var=scone_scope_port_${manager}
+    m=`echo $manager | tr '-' '_'`   # "-" permitted in hostnames / not in variables ; "_" not permitted in hostnames but in variables...
+
+    var=scone_scope_port_${m}
     no=${#NODES[@]}
     if [[ ! ${!var} == "" ]] ; then
         let local_port=${!var}
@@ -126,8 +128,8 @@ function  start_tunnel {
         let local_port=$scone_monitor_tunnel_port        
         let scone_monitor_tunnel_port=$scone_monitor_tunnel_port+$no
     fi
-    let scone_scope_port_${manager}=$local_port
-    add_variable scone_scope_port_${manager}
+    let scone_scope_port_${m}=$local_port
+    add_variable scone_scope_port_${m}
     echo $local_port
 
     verbose "  tunnel to scope on cluster $manager available at http://localhost:${!var}"
