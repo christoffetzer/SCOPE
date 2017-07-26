@@ -57,6 +57,11 @@ function set_state {
     outputfile="$dir/scope-generated.yml"
     remote_user=`$prefix 'id -u'`
     remote_grp=`$prefix 'id -g'`
+
+    if [[ "$scone_monitor_tunnel_port" == "" ]] ; then
+        scone_monitor_tunnel_port=11100
+        add_variable scone_monitor_tunnel_port
+    fi
 }
 
 
@@ -74,11 +79,11 @@ function deploy_stack {
 
     # now start SCOPE
     copy_to_remote $outputfile $manager /tmp/scope-stack.yml "0400" "$remote_user" "$remote_grp"
-    $prefix docker stack deploy -c /tmp/scope-stack.yml SCOPE
+    $prefix sudo docker stack deploy -c /tmp/scope-stack.yml SCOPE
 }
 
 function check_scope {
-    nodes=`$prefix docker stack ps --filter "desired-state=Running" SCOPE -q | wc -l`
+    nodes=`$prefix sudo docker stack ps --filter "desired-state=Running" SCOPE -q | wc -l`
     ((nodes--))
     if [[ $nodes == ${#NODES[@]} ]] ; then
         verbose "all SCOPE containers are running"
@@ -145,7 +150,7 @@ function  start_tunnel {
 
 function stop_services {
     verbose "Stopping service SCOPE"
-    $prefix "docker stack rm SCOPE"
+    $prefix "sudo docker stack rm SCOPE"
 }
 
 function uninstall_services {
@@ -245,6 +250,7 @@ case $command in
         uninstall_services ;;
 
     "tunnel")
+        set_state
         start_tunnel ;;
 
     "check")  
