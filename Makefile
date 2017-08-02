@@ -1,0 +1,3 @@
+
+ci:
+	./gitlab-ci.sh
