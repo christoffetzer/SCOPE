@@ -4,6 +4,8 @@
 #
 # (C) Christof Fetzer, 2017
 
+set -x -e 
+
 # ci
    sudo SCONE_HOSTINSTALLER/install_patched_docker.sh
 # change user has not taken effect - run with sudo
