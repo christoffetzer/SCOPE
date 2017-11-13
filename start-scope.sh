@@ -32,7 +32,7 @@ function create_yml
     for NODENO in `seq 1 $no` ; do
         verbose  "Adding config for node $NODENO "
         envsubst < scope-template.yml >> $outputfile
-        ((PORT++))
+        let PORT++
     done
 }
 

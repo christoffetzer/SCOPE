@@ -62,7 +62,7 @@ function setup_tunnels
         if [[ $printports == true ]] ; then
             echo " mapping SCOPE $M:$PORT to localhost:$LOCALSCOPEPORT"
         fi
-        ((LOCALSCOPEPORT++))
+        let LOCALSCOPEPORT++
     done
 
     SSHCMD="$SSHCMD $M"
