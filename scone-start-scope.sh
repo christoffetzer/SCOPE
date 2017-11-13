@@ -74,7 +74,7 @@ function deploy_stack {
     for NODENO in `seq 1 $no` ; do
         verbose  "Adding config for node $NODENO "
         envsubst < $dir/scope-template.yml >> $outputfile
-        ((++PORT))
+        let ++PORT
     done
 
     # now start SCOPE
@@ -142,8 +142,8 @@ function  start_tunnel {
     for NODENO in `seq 1 $no` ; do
         verbose  "Adding tunnel for node $NODENO (local port $local_port)"
         ssh -O forward -S $controlpath -L  $local_port:$manager:$PORT $manager
-        ((++local_port))
-        ((++PORT))
+        let ++local_port
+        let ++PORT
     done
 
 }
